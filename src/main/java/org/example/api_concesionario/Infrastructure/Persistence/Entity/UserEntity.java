@@ -19,13 +19,13 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_user")
+    @Column(name = "id_user",nullable = false)
     private UUID id;
-    @Column(name = "username")
+    @Column(name = "username",unique = true,nullable = false)
     private String username;
-    @Column(name = "user_password")
+    @Column(name = "user_password",nullable = false)
     private String password;
-    @Column(name = "rol")
+    @Column(name = "rol",nullable = false)
     @Enumerated(EnumType.STRING)
     private Rol role;
 

@@ -1,11 +1,13 @@
 package org.example.api_concesionario.Infrastructure.Persistence.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
+
 
 @Entity
 @Table(name = "category_car")
@@ -14,4 +16,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CategoryCarEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_category")
+    private UUID id_category;
+
+    @Column(name = "name_category", nullable = false, length = 20)
+    private String name_category;
+
+    @Column(name = "is_delete", nullable = false)
+    private Boolean is_delete = Boolean.FALSE ;
 }
