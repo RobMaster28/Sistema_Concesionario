@@ -1,4 +1,11 @@
 package org.example.api_concesionario.Domain.Model;
 
-public record GalleryCar() {
+import java.util.UUID;
+
+public record GalleryCar(
+    UUID id_galley,
+    String nameGalley,
+    Boolean is_delete,
+    Car car
+) {
 }

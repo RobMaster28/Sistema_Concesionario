@@ -1,4 +1,12 @@
 package org.example.api_concesionario.Domain.Model;
 
-public record ColorCar() {
+import java.util.UUID;
+
+public record ColorCar(
+    UUID id_color,
+    String url_img_color,
+    String name_color,
+    boolean is_deleted,
+    Car car
+) {
 }
