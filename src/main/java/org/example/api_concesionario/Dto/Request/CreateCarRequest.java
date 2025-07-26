@@ -1,6 +1,6 @@
-package org.example.api_concesionario.Dto;
+package org.example.api_concesionario.Dto.Request;
 
-public record CreateCar(
+public record CreateCarRequest(
     String carName,
     String url_img_car,
     double price,
@@ -9,7 +9,7 @@ public record CreateCar(
     String model,
     String engine,
     String traction,
-    String transmission, 
+    String transmission,
     String torque,
     String speed,
     String url_technicalSheet
