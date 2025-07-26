@@ -3,6 +3,8 @@ package org.example.api_concesionario.Infrastructure.Persistence.Repository.User
 import lombok.RequiredArgsConstructor;
 import org.example.api_concesionario.Application.Port.Output.UserRepositoryPort;
 import org.example.api_concesionario.Domain.Model.User;
+import org.example.api_concesionario.Infrastructure.Persistence.Entity.UserEntity;
+import org.example.api_concesionario.Mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -13,7 +15,10 @@ public class JpaUserRepositoryAdapter implements UserRepositoryPort {
 
     @Override
     public User save(User user) {
-        return null;
+        UserEntity userEntity = springDateUserRepository.save(
+                UserMapper.toUserEntityWithoutId(user)
+        );
+        return UserMapper.toUserFull(userEntity);
     }
 
 }

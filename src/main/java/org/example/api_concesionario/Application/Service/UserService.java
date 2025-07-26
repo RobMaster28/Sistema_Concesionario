@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService implements CreateUserUseCase {
 
-    private UserRepositoryPort  userRepositoryPort;
+    private final UserRepositoryPort  userRepositoryPort;
 
     @Override
-    public Void SaveUser(User user) {
-        return null;
+    public User SaveUser(User user) {
+        return userRepositoryPort.save(user);
     }
 
 }

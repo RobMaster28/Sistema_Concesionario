@@ -20,7 +20,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user",nullable = false)
-    private UUID id;
+    private UUID id_user;
     @Column(name = "username",unique = true,nullable = false)
     private String username;
     @Column(name = "user_password",nullable = false)
@@ -29,4 +29,9 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     private Rol role;
 
+    public UserEntity(String username, String password, Rol role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 }

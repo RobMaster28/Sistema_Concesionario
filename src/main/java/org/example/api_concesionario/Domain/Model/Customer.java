@@ -2,6 +2,7 @@ package org.example.api_concesionario.Domain.Model;
 
 import org.example.api_concesionario.Enum.TypeDocument;
 
+
 import java.util.UUID;
 
 public record Customer(
@@ -14,5 +15,6 @@ public record Customer(
     String document,
     Boolean is_deleted,
     User user
-) {
+)
+{
 }

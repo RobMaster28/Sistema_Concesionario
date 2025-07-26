@@ -5,7 +5,7 @@ import org.example.api_concesionario.Enum.Rol;
 import java.util.UUID;
 
 public record User(
-    UUID id,
+    UUID id_user,
     String username,
     String password,
     Rol role

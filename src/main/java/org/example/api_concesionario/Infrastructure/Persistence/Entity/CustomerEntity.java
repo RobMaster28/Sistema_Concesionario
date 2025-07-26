@@ -49,8 +49,18 @@ public class CustomerEntity {
     )
     @JoinColumn(
             name = "id_user",
-            referencedColumnName = "id_user"
+            referencedColumnName = "id_user",
+            nullable = false
     )
     private UserEntity user;
 
+    public CustomerEntity(String first_name, String last_name, String email, String phone, TypeDocument enum_document, String document, UserEntity user) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.phone = phone;
+        this.Enum_document = enum_document;
+        this.document = document;
+        this.user = user;
+    }
 }
