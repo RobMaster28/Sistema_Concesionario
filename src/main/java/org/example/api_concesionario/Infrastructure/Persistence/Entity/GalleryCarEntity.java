@@ -24,6 +24,9 @@ public class GalleryCarEntity {
     @Column(name = "name_galley", length = 50)
     private String nameGalley;
 
+    @Column()
+    private Boolean is_delete = Boolean.FALSE;
+
     @ManyToOne(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.REFRESH, CascadeType.MERGE}
