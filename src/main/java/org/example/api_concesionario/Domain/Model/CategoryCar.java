@@ -1,7 +1,5 @@
 package org.example.api_concesionario.Domain.Model;
 
-
-
 import java.util.UUID;
 
 public record CategoryCar(

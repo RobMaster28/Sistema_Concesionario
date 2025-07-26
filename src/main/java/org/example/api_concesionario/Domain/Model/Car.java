@@ -5,7 +5,6 @@ import org.example.api_concesionario.Infrastructure.Persistence.Entity.CategoryC
 import java.util.UUID;
 
 public record Car(
-        UUID id_car,
         String carName,
         String url_img_car,
         double price,
@@ -17,8 +16,7 @@ public record Car(
         String transmission,
         String torque,
         String speed,
-        String technicalSheet,
-        Boolean is_delete,
-        CategoryCar category
+        String url_technicalSheet,
+        UUID id_category
 ) {
 }
