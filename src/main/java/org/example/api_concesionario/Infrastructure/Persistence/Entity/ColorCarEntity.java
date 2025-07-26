@@ -22,6 +22,9 @@ public class ColorCarEntity {
     @Column(name = "id_color")
     private UUID id_color;
 
+    @Column(name = "url_img_car_color", nullable = false, columnDefinition = "TEXT")
+    private String url_img_car_color;
+
     @Column(name = "url_img_color", nullable = false, columnDefinition = "TEXT")
     private String url_img_color;
 
