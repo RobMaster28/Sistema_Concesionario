@@ -1,8 +1,9 @@
 package org.example.api_concesionario.Application.Port.Input.CustomerUseCase;
 
 import org.example.api_concesionario.Domain.Model.Customer;
+import org.example.api_concesionario.Domain.Model.User;
 import org.example.api_concesionario.Infrastructure.Persistence.Entity.UserEntity;
 
 public interface CreateCustomerWithUserEntityUseCase {
-    Customer SaveCustomerWithUser(Customer customer, UserEntity user);
+    Customer SaveCustomerWithUser(Customer customer, User user);
 }
