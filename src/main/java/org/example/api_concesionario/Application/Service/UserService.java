@@ -19,7 +19,7 @@ public class UserService implements CreateUserUseCase {
     @Override
     public User SaveUser(User user) {
         logger.info(
-                user!=null ? "La data del user paso el servicio con exito!" : "L‼️"
+                user!=null ? "La data del user paso el servicio con exito!" : "La data del user esta null‼️"
         );
         return userRepositoryPort.save(user);
     }
