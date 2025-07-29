@@ -27,4 +27,8 @@ public class CategoryCarEntity {
 
     @Column(name = "is_delete", nullable = false)
     private Boolean is_delete = Boolean.FALSE ;
+
+    public CategoryCarEntity(String name_category) {
+        this.name_category = name_category;
+    }
 }
