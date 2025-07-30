@@ -1,8 +1,10 @@
 package org.example.api_concesionario.Dto.Request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public record CreateCarRequest(
     String carName,
-    String url_img_car,
+    MultipartFile url_img_car,
     double price,
     int stock,
     String brand,
@@ -12,6 +14,6 @@ public record CreateCarRequest(
     String transmission,
     String torque,
     String speed,
-    String url_technicalSheet
+    MultipartFile url_technicalSheet
 ) {
 }

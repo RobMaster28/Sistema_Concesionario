@@ -7,9 +7,12 @@ import org.example.api_concesionario.Infrastructure.Persistence.Entity.CategoryC
 import org.example.api_concesionario.Mapper.CategoryCarMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -23,6 +26,9 @@ import java.util.UUID;
 public class JpaCategoryCarRepositoryAdapter implements CategoryCarRepositoryPort {
 
     private final SpringDateCategoryCarRepository springDateCategoryCarRepository;
+
+    @Value("${size_by_page}")
+    private int size;
 
     private final Logger log =  LoggerFactory.getLogger(this.getClass());
 
@@ -56,12 +62,10 @@ public class JpaCategoryCarRepositoryAdapter implements CategoryCarRepositoryPor
     @Transactional
     public CategoryCar findById(UUID id) {
         log.debug("Buscando la categoria por id: {}", id);
-        CategoryCarEntity categoryCarEntity = springDateCategoryCarRepository.findById(id)
+        CategoryCarEntity categoryCarEntity = springDateCategoryCarRepository.findByIdNotDelete(id)
                 .orElseThrow( () -> new RuntimeException("No se encontró la categoria por id: " + id));
-        if (categoryCarEntity.getIs_delete() == true) {
-            throw new RuntimeException("No se encontró la categoria por id: " + id );
-        }
         CategoryCar categoryCar = CategoryCarMapper.toCategoryCarFull(categoryCarEntity);
+        log.debug("Se encontró con exito el record {}", CategoryCar.class.getName());
         return categoryCar;
     }
 
@@ -73,12 +77,36 @@ public class JpaCategoryCarRepositoryAdapter implements CategoryCarRepositoryPor
     @Override
     @Transactional
     public CategoryCarEntity findEntityById(UUID id) {
-        CategoryCarEntity categoryCarEntity = springDateCategoryCarRepository.findById(id)
+        log.debug("Buscando la entidad de categoria por id: {}", id);
+        CategoryCarEntity categoryCarEntity = springDateCategoryCarRepository.findByIdNotDelete(id)
                 .orElseThrow(() -> new RuntimeException("No se encontró la categoria por id: " + id ));
-        if (categoryCarEntity.getIs_delete() == true) {
-            throw new RuntimeException("No se encontró la categoria por id: " + id );
-        }
+        log.debug("Se encontró con exito la entidad {}", CategoryCarEntity.class.getName());
         return categoryCarEntity;
+    }
+
+    /**
+     * Devuelve una lisa paginada de categorias
+     * @param page El número de la página
+     * @return devuelve un List<CategoryCarEntity>
+     */
+    @Override
+    @Transactional
+    public List<CategoryCar> findByPage(int page) {
+        List<CategoryCarEntity>categoryCarEntities = springDateCategoryCarRepository.findAll(
+                PageRequest.of(page,size)
+        ).getContent();
+        return CategoryCarMapper.toCategoryCars(categoryCarEntities);
+    }
+
+    /**
+     * Devuelve la lista entera de categorias
+     * @return devuelve un List<CategoryCarEntity>
+     */
+    @Override
+    @Transactional
+    public List<CategoryCar> findAll() {
+        List<CategoryCarEntity>categoryCarEntities = springDateCategoryCarRepository.findAll();
+        return CategoryCarMapper.toCategoryCars(categoryCarEntities);
     }
 
 
