@@ -35,17 +35,17 @@ public class CategoryCarService implements CreateCategoryUseCase, FindCategoryCa
     }
 
     @Override
-    public FindCategoryCarResponse findCategoryCarById(UUID id) {
-        log.info("Iniciando el Metodo findCategoryCarById");
+    public FindCategoryCarResponse findCategoryCarResponseById(UUID id) {
+        log.info("Iniciando el Metodo findCategoryCarResponseById");
         CategoryCar categoryCar = categoryCarRepositoryPort.findById(id);
-        log.info("El Metodo findCategoryCarById fue realizado con exitoso✔️✔️");
+        log.info("El Metodo findCategoryCarResponseById fue realizado con exitoso✔️✔️");
         return CategoryCarMapper.toFindCategoryCarResponse(categoryCar);
     }
 
     @Override
-    public CategoryCarEntity findCategoryCarEntityById(UUID id) {
+    public CategoryCar findCategoryCarById(UUID id) {
         log.info("Iniciando el Metodo findCategoryCarEntityById");
-        CategoryCarEntity categoryCar = categoryCarRepositoryPort.findEntityById(id);
+        CategoryCar categoryCar = categoryCarRepositoryPort.findById(id);
         log.info("El Metodo findCategoryCarEntityById fue realizado con exitoso✔️✔️");
         return categoryCar;
     }

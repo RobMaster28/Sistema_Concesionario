@@ -5,7 +5,6 @@ import org.example.api_concesionario.Application.Port.Input.CustomerUseCase.Crea
 import org.example.api_concesionario.Application.Port.Output.CustomerRepositoryPort;
 import org.example.api_concesionario.Domain.Model.Customer;
 import org.example.api_concesionario.Domain.Model.User;
-import org.example.api_concesionario.Infrastructure.Persistence.Entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

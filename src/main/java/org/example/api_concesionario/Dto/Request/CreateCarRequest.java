@@ -2,6 +2,8 @@ package org.example.api_concesionario.Dto.Request;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.UUID;
+
 public record CreateCarRequest(
     String carName,
     MultipartFile url_img_car,
@@ -14,6 +16,7 @@ public record CreateCarRequest(
     String transmission,
     String torque,
     String speed,
-    MultipartFile url_technicalSheet
+    MultipartFile url_technicalSheet,
+    UUID id_CategoryCar
 ) {
 }

@@ -69,20 +69,7 @@ public class JpaCategoryCarRepositoryAdapter implements CategoryCarRepositoryPor
         return categoryCar;
     }
 
-    /**
-     * Busca un CategoryCarEntity para porder relacionarlo a un CarEntity
-     * @param id El medio por el cual se busca
-     * @return el objeto CategoryCar buscado.
-     */
-    @Override
-    @Transactional
-    public CategoryCarEntity findEntityById(UUID id) {
-        log.debug("Buscando la entidad de categoria por id: {}", id);
-        CategoryCarEntity categoryCarEntity = springDateCategoryCarRepository.findByIdNotDelete(id)
-                .orElseThrow(() -> new RuntimeException("No se encontró la categoria por id: " + id ));
-        log.debug("Se encontró con exito la entidad {}", CategoryCarEntity.class.getName());
-        return categoryCarEntity;
-    }
+
 
     /**
      * Devuelve una lisa paginada de categorias

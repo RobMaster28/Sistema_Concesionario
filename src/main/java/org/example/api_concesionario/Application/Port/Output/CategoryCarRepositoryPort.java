@@ -9,7 +9,6 @@ import java.util.UUID;
 public interface CategoryCarRepositoryPort {
     CategoryCar save(CategoryCar categoryCar);
     CategoryCar findById(UUID id);
-    CategoryCarEntity findEntityById(UUID id);
     List<CategoryCar> findByPage(int page);
     List<CategoryCar> findAll();
 }

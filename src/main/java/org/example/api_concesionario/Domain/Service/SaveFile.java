@@ -17,28 +17,20 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Component
 public class SaveFile {
-
-
     @Value("${server.port}")
     private String port;
-
     private static final Logger log = LoggerFactory.getLogger(SaveFile.class);
-
     public String summitFile(MultipartFile file) {
         if (!file.isEmpty()) {
             try {
-
                 Path carpetaUploads = Paths.get("uploads");
                 if (Files.notExists(carpetaUploads)) {
                     Files.createDirectories(carpetaUploads);
                 }
-
                 String nombreArchivo = UUID.randomUUID() + "_" + file.getOriginalFilename();
                 Path rutaArchivo = carpetaUploads.resolve(nombreArchivo);
                 Files.copy(file.getInputStream(), rutaArchivo, StandardCopyOption.REPLACE_EXISTING);
-
                 return "http://localhost:" + port + "/uploads/" + nombreArchivo;
-
             } catch (IOException e) {
                 log.error("Ocurrió un error al cargar el archivo: {}", e.getMessage());
             }

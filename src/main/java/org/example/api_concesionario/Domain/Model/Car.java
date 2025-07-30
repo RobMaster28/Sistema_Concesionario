@@ -1,10 +1,10 @@
 package org.example.api_concesionario.Domain.Model;
 
-import org.example.api_concesionario.Infrastructure.Persistence.Entity.CategoryCarEntity;
 
 import java.util.UUID;
 
 public record Car(
+        UUID id_car,
         String carName,
         String url_img_car,
         double price,
@@ -17,6 +17,6 @@ public record Car(
         String torque,
         String speed,
         String url_technicalSheet,
-        UUID id_category
+        CategoryCar categoryCar
 ) {
 }
