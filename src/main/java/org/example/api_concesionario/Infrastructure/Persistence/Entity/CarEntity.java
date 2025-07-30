@@ -70,4 +70,20 @@ public class CarEntity {
             referencedColumnName = "id_category"
     )
     private CategoryCarEntity category;
+
+    public CarEntity(String carName, String url_img_car, double price, int stock, String brand, String model, String engine, String traction, String transmission, String torque, String speed, String technicalSheet, CategoryCarEntity category) {
+        this.carName = carName;
+        this.url_img_car = url_img_car;
+        this.price = price;
+        this.stock = stock;
+        this.brand = brand;
+        this.model = model;
+        this.engine = engine;
+        this.traction = traction;
+        this.transmission = transmission;
+        this.torque = torque;
+        this.speed = speed;
+        this.technicalSheet = technicalSheet;
+        this.category = category;
+    }
 }

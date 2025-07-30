@@ -23,6 +23,14 @@ public class CategoryCarMapper {
         );
     }
 
+    public static CategoryCarEntity toCategoryCarEntityFull(CategoryCar  categoryCar) {
+        return new CategoryCarEntity(
+                categoryCar.id_category(),
+                categoryCar.name_category(),
+                categoryCar.is_delete()
+        );
+    }
+
     public static CategoryCar toCategoryCarEntityName(CreateCategoryCarRequest createCategoryCarRequest) {
         return new CategoryCar(
                 null,
