@@ -59,7 +59,7 @@ public class CarEntity {
     private String technicalSheet;
 
     @Column(name = "is_deleted", nullable = false)
-    private boolean id_deleted;
+    private boolean is_deleted;
 
     @ManyToOne(
             fetch = FetchType.LAZY,
