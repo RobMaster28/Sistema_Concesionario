@@ -2,14 +2,12 @@ package org.example.api_concesionario.Application.Service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.api_concesionario.Application.Port.Input.CategoryCarUseCase.CreateCategoryUseCase;
-import org.example.api_concesionario.Application.Port.Input.CategoryCarUseCase.FindCategoryCarEntityUseCase;
 import org.example.api_concesionario.Application.Port.Input.CategoryCarUseCase.FindCategoryCarUseCase;
 import org.example.api_concesionario.Application.Port.Output.CategoryCarRepositoryPort;
 import org.example.api_concesionario.Domain.Model.CategoryCar;
 import org.example.api_concesionario.Dto.Request.CreateCategoryCarRequest;
 import org.example.api_concesionario.Dto.Response.FindCategoryCarResponse;
 import org.example.api_concesionario.Dto.Response.ListCategoryCarResponse;
-import org.example.api_concesionario.Infrastructure.Persistence.Entity.CategoryCarEntity;
 import org.example.api_concesionario.Mapper.CategoryCarMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +18,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryCarService implements CreateCategoryUseCase, FindCategoryCarUseCase, FindCategoryCarEntityUseCase {
+public class CategoryCarService implements CreateCategoryUseCase, FindCategoryCarUseCase {
 
     private final CategoryCarRepositoryPort categoryCarRepositoryPort;
 
