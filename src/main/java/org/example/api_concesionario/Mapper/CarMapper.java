@@ -2,6 +2,7 @@ package org.example.api_concesionario.Mapper;
 
 import org.example.api_concesionario.Domain.Model.Car;
 import org.example.api_concesionario.Domain.Model.CategoryCar;
+import org.example.api_concesionario.Dto.Request.CreateCarRequest;
 import org.example.api_concesionario.Infrastructure.Persistence.Entity.CarEntity;
 import org.example.api_concesionario.Infrastructure.Persistence.Entity.CategoryCarEntity;
 
@@ -67,5 +68,25 @@ public class CarMapper {
         return carEntities.stream()
                 .map(CarMapper::toCarWithoutCategory)
                 .toList();
+    }
+
+    public static Car toCarInitialization(
+            String url_img_car, String url_file_technicalSheet, CategoryCar categoryCar, CreateCarRequest createCarRequest) {
+        return new Car(
+                null,
+                createCarRequest.carName(),
+                url_img_car,
+                createCarRequest.price(),
+                createCarRequest.stock(),
+                createCarRequest.brand(),
+                createCarRequest.model(),
+                createCarRequest.engine(),
+                createCarRequest.traction(),
+                createCarRequest.transmission(),
+                createCarRequest.torque(),
+                createCarRequest.speed(),
+                url_file_technicalSheet,
+                categoryCar
+        );
     }
 }

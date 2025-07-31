@@ -27,6 +27,12 @@ public class JpaCarRepositoryAdapter implements CarRepositoryPort {
     private int size;
     private final SpringDateCarRepository springDateCarRepository;
     private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+    /**
+     * Guarda un vehiculo en la base de datos
+     * @param car - el objeto que se desea guardar(Tiene la categoria adentro)
+     * @return el objeto Car guardado
+     */
     @Override
     @Transactional
     public Car saveWithCategory(Car car) {
@@ -39,6 +45,11 @@ public class JpaCarRepositoryAdapter implements CarRepositoryPort {
         return CarMapper.toCarWithCategory(carEntity,categoryCar);
     }
 
+    /**
+     * Me busca en la base de datos a un car
+     * @param id - El parámetro por el cual se busca
+     * @return El objeto Car Buscado (Tiene su categoria adentro)
+     */
     @Override
     public Car findById(UUID id) {
         CarEntity carEntity = springDateCarRepository.findByIdNotDelete(id)
@@ -47,6 +58,12 @@ public class JpaCarRepositoryAdapter implements CarRepositoryPort {
         return CarMapper.toCarWithCategory(carEntity,categoryCar);
     }
 
+    /**
+     * Me devuelve una lista de vehiculos por página con el size por default
+     * @param page - La pagina que se desea recoger
+     * @return La lista List<Car> (Cada vehículo dentro de esta lista no trae su categoria como en los otros servicio),
+     * ya que se piensa usarlo nomas en la tienda de vehiculos y categoria no es esencial
+     */
     @Override
     public List<Car> findByPage(int page) {
         List<CarEntity> carEntities = springDateCarRepository.findAll(

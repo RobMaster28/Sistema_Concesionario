@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface FindCarUseCase {
     Car findCarById(UUID id);
-    List<Car> ListCarsByPage();
+    List<Car> ListCarsByPage(int page);
 }

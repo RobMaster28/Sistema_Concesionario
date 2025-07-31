@@ -19,7 +19,7 @@ import java.util.UUID;
 public class SaveFile {
     @Value("${server.port}")
     private String port;
-    private static final Logger log = LoggerFactory.getLogger(SaveFile.class);
+    private final Logger log = LoggerFactory.getLogger(SaveFile.class);
     public String summitFile(MultipartFile file) {
         if (!file.isEmpty()) {
             try {
